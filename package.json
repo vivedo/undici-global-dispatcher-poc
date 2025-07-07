@@ -1,0 +1,16 @@
+{
+  "name": "undici-global-dispatcher-poc",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivedo/undici-global-dispatcher-poc.git"
+  },
+  "homepage": "https://github.com/vivedo/undici-global-dispatcher-poc#readme",
+  "dependencies": {
+    "undici": "7.11.0"
+  }
+}

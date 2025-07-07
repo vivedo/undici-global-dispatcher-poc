@@ -1,0 +1,82 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-with-http:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          [
+            20.x,
+            22.0.0,
+            22.1.0,
+            22.2.0,
+            22.3.0,
+            22.4.0,
+            22.5.0,
+            22.6.0,
+            22.7.0,
+            22.8.0,
+            22.9.0,
+            22.10.0,
+            22.11.0,
+            22.12.0,
+            22.13.0,
+            22.14.0,
+            22.15.0,
+            22.16.0,
+            22.17.0,
+            24.0.0,
+          ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: node with-http.test.js
+
+  test-without-http:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          [
+            20.x,
+            22.0.0,
+            22.1.0,
+            22.2.0,
+            22.3.0,
+            22.4.0,
+            22.5.0,
+            22.6.0,
+            22.7.0,
+            22.8.0,
+            22.9.0,
+            22.10.0,
+            22.11.0,
+            22.12.0,
+            22.13.0,
+            22.14.0,
+            22.15.0,
+            22.16.0,
+            22.17.0,
+            24.0.0,
+          ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: node without-http.test.js
